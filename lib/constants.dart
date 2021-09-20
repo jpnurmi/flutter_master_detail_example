@@ -1,2 +1,2 @@
-const num kLeftPaneWidth = 245;
-const num kAppBarHeight = 48;
+const kLeftPaneWidth = 245.0;
+const kAppBarHeight = 48.0;

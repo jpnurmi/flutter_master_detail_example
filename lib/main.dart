@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:yaru/yaru.dart' as yaru;
+
 import 'page_item.dart';
 import 'landscape_layout.dart';
 import 'portrait_layout.dart';
 
 void main() {
   runApp(MaterialApp(
-      theme: yaru.lightTheme,
-      darkTheme: yaru.darkTheme,
-      home: MasterDetailPage()));
+    theme: yaru.lightTheme,
+    darkTheme: yaru.darkTheme,
+    home: MasterDetailPage(),
+  ));
 }
 
 class MasterDetailPage extends StatefulWidget {

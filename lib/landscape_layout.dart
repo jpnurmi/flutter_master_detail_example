@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_master_detail_example/constants.dart';
 
+import 'constants.dart';
 import 'page_item.dart';
 
 class LandscapeLayout extends StatefulWidget {
@@ -30,23 +30,18 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Scaffold(
       body: Column(
         children: [
           SizedBox(
-            height: kAppBarHeight.toDouble(),
+            height: kAppBarHeight,
             child: Row(
               children: [
                 SizedBox(
-                  width: kLeftPaneWidth.toDouble(),
-                  child: AppBar(
-                    title: Text('Settings'),
-                  ),
+                  width: kLeftPaneWidth,
+                  child: AppBar(title: Text('Pages')),
                 ),
-                SizedBox(
-                  width: size.width - kLeftPaneWidth.toDouble(),
+                Expanded(
                   child: AppBar(
                     title: Text('Landscape: ${widget.pages[_index].title}'),
                   ),
@@ -54,41 +49,39 @@ class _LandscapeLayoutState extends State<LandscapeLayout> {
               ],
             ),
           ),
-          SizedBox(
-            child: SizedBox(
-              height: size.height - kAppBarHeight.toDouble(),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  SizedBox(
-                    width: kLeftPaneWidth.toDouble(),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          border: Border(
-                              right: BorderSide(
-                                  width: 1,
-                                  color: Colors.black.withOpacity(0.05)))),
-                      child: ListView(
-                        children: [
-                          for (var i = 0; i < widget.pages.length; ++i)
-                            ListTile(
-                              title: Text(widget.pages[i].title),
-                              selected: i == _index,
-                              onTap: () {
-                                widget.onSelected(i);
-                                setState(() => _index = i);
-                              },
-                            )
-                        ],
+          Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SizedBox(
+                  width: kLeftPaneWidth,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        right: BorderSide(
+                          width: 1,
+                          color: Colors.black.withOpacity(0.05),
+                        ),
                       ),
                     ),
+                    child: ListView(
+                      children: [
+                        for (var i = 0; i < widget.pages.length; ++i)
+                          ListTile(
+                            title: Text(widget.pages[i].title),
+                            selected: i == _index,
+                            onTap: () {
+                              widget.onSelected(i);
+                              setState(() => _index = i);
+                            },
+                          )
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                      width: size.width - kLeftPaneWidth,
-                      child: widget.pages[_index].builder(context)),
-                ],
-              ),
+                ),
+                Expanded(child: widget.pages[_index].builder(context)),
+              ],
             ),
           ),
         ],
