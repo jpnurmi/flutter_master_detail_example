@@ -56,6 +56,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
               builder: (context) {
                 return Scaffold(
                   appBar: AppBar(
+                    toolbarHeight: kAppBarHeight.toDouble(),
                     title: Text('Portrait'),
                   ),
                   body: ListView(
