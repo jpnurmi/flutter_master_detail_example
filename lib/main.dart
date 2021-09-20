@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:yaru/yaru.dart' as yaru;
 
 import 'page_item.dart';
 import 'landscape_layout.dart';
 import 'portrait_layout.dart';
 
 void main() {
-  runApp(MaterialApp(home: MasterDetailPage()));
+  runApp(MaterialApp(
+    theme: yaru.lightTheme,
+    darkTheme: yaru.darkTheme,
+    home: MasterDetailPage(),
+  ));
 }
 
 class MasterDetailPage extends StatefulWidget {
@@ -29,15 +34,18 @@ class _MasterDetailPageState extends State<MasterDetailPage> {
     final pages = [
       PageItem(
         title: 'Red',
-        builder: (_) => ColorPage(text: 'Red', color: Colors.red),
+        builder: (_) =>
+            ColorPage(text: 'Red', color: Colors.red.withOpacity(0.1)),
       ),
       PageItem(
         title: 'Green',
-        builder: (_) => ColorPage(text: 'Green', color: Colors.green),
+        builder: (_) =>
+            ColorPage(text: 'Green', color: Colors.green.withOpacity(0.1)),
       ),
       PageItem(
         title: 'Blue',
-        builder: (_) => ColorPage(text: 'Blue', color: Colors.blue),
+        builder: (_) =>
+            ColorPage(text: 'Blue', color: Colors.blue.withOpacity(0.1)),
       ),
     ];
 

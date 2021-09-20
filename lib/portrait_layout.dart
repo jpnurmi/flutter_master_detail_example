@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'constants.dart';
 import 'page_item.dart';
 
 class PortraitLayout extends StatefulWidget {
@@ -28,6 +29,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
         final page = widget.pages[index];
         return Scaffold(
           appBar: AppBar(
+            toolbarHeight: kAppBarHeight,
             title: Text('Portrait: ${page.title}'),
             leading: BackButton(
               onPressed: () {
@@ -54,6 +56,7 @@ class _PortraitLayoutState extends State<PortraitLayout> {
               builder: (context) {
                 return Scaffold(
                   appBar: AppBar(
+                    toolbarHeight: kAppBarHeight,
                     title: Text('Portrait'),
                   ),
                   body: ListView(
